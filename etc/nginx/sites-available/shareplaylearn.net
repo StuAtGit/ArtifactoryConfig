@@ -16,6 +16,12 @@ server {
 
     ssl_protocols TLSv1.2;
 
+    #generated this with:
+    #$> cd /etc/ssl/certs
+    #$> openssl dhparam -out dhparam.pem 4096
+    #The whole point is this is a unique-per-server file
+    ssl_dhparam /etc/ssl/certs/dhparam.pem;
+
     add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
 
     root /var/www/html;
